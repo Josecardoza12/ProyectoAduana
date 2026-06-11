@@ -1,0 +1,212 @@
+2026-06-10 11:47:50 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 11:47:50 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Starting MsVehiculoApplication using Java 26.0.1 with PID 15168 (C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo\target\classes started by jaelm in C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo)
+2026-06-10 11:47:50 [main] DEBUG c.a.msvehiculo.MsVehiculoApplication - Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-06-10 11:47:50 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 11:47:52 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-10 11:47:52 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interface.
+2026-06-10 11:47:53 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2026-06-10 11:47:53 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2228 ms
+2026-06-10 11:47:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-10 11:47:53 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@46cf8c07
+2026-06-10 11:47:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-10 11:47:53 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://localhost:3306/vehiculos_db (MySQL 5.5)
+2026-06-10 11:47:53 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.060s)
+2026-06-10 11:47:53 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `vehiculos_db`: 1
+2026-06-10 11:47:53 [main] INFO  o.f.core.internal.command.DbMigrate - Schema `vehiculos_db` is up to date. No migration necessary.
+2026-06-10 11:47:53 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-10 11:47:53 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-06-10 11:47:53 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-10 11:47:54 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-10 11:47:54 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-06-10 11:47:54 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 11:47:55 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 11:47:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 11:47:55 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2026-06-10 11:47:55 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Started MsVehiculoApplication in 5.781 seconds (process running for 6.979)
+2026-06-10 11:47:55 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 11:47:55 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-10 11:47:55 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 11:47:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-10 11:47:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-10 11:47:57 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 11:47:57 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Starting MsVehiculoApplication using Java 26.0.1 with PID 21144 (C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo\target\classes started by jaelm in C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo)
+2026-06-10 11:47:57 [main] DEBUG c.a.msvehiculo.MsVehiculoApplication - Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-06-10 11:47:57 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 11:47:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-10 11:47:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 1 JPA repository interface.
+2026-06-10 11:47:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2026-06-10 11:47:59 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2026-06-10 11:47:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-10 11:47:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-10 11:47:59 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-10 11:47:59 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1242 ms
+2026-06-10 11:47:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-10 11:47:59 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b56ec6c
+2026-06-10 11:47:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-10 11:47:59 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://localhost:3306/vehiculos_db (MySQL 5.5)
+2026-06-10 11:47:59 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.026s)
+2026-06-10 11:47:59 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `vehiculos_db`: 1
+2026-06-10 11:47:59 [main] INFO  o.f.core.internal.command.DbMigrate - Schema `vehiculos_db` is up to date. No migration necessary.
+2026-06-10 11:47:59 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-10 11:47:59 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-06-10 11:47:59 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-10 11:48:00 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-10 11:48:00 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-06-10 11:48:00 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 11:48:00 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 11:48:00 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 11:48:01 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2026-06-10 11:48:01 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2026-06-10 11:48:01 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Started MsVehiculoApplication in 4.331 seconds (process running for 4.778)
+2026-06-10 11:48:34 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-10 11:48:34 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-10 11:48:34 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-06-10 11:48:35 [http-nio-8082-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 443 ms
+2026-06-10 12:05:35 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 12:05:35 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-10 12:05:35 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 12:05:35 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-10 12:05:35 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-10 12:05:40 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 12:05:40 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Starting MsVehiculoApplication using Java 26.0.1 with PID 1708 (C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo\target\classes started by jaelm in C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo)
+2026-06-10 12:05:40 [main] DEBUG c.a.msvehiculo.MsVehiculoApplication - Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-06-10 12:05:40 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 12:05:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-10 12:05:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 37 ms. Found 1 JPA repository interface.
+2026-06-10 12:05:41 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2026-06-10 12:05:41 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2026-06-10 12:05:41 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-10 12:05:41 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-10 12:05:41 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-10 12:05:41 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1328 ms
+2026-06-10 12:05:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-10 12:05:41 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6bcdd6e4
+2026-06-10 12:05:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-10 12:05:41 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://localhost:3306/vehiculos_db (MySQL 5.5)
+2026-06-10 12:05:41 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.030s)
+2026-06-10 12:05:41 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `vehiculos_db`: 1
+2026-06-10 12:05:41 [main] INFO  o.f.core.internal.command.DbMigrate - Schema `vehiculos_db` is up to date. No migration necessary.
+2026-06-10 12:05:42 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-10 12:05:42 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-06-10 12:05:42 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-10 12:05:42 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-10 12:05:42 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-06-10 12:05:42 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 12:05:43 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 12:05:43 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 12:05:43 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2026-06-10 12:05:44 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2026-06-10 12:05:44 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Started MsVehiculoApplication in 4.546 seconds (process running for 5.042)
+2026-06-10 12:05:55 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-10 12:05:55 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-10 12:05:55 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-06-10 12:05:56 [http-nio-8082-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 826 ms
+2026-06-10 12:08:51 [http-nio-8082-exec-7] INFO  c.a.m.controller.VehiculoController - Petición POST recibida para registrar vehículo con patente: ABCD12
+2026-06-10 12:08:51 [http-nio-8082-exec-7] INFO  c.a.m.service.VehiculoService - Intentando registrar vehículo con patente: ABCD12
+2026-06-10 12:08:51 [http-nio-8082-exec-7] INFO  c.a.m.service.VehiculoService - Vehículo registrado exitosamente con ID: 3
+2026-06-10 12:09:21 [http-nio-8082-exec-8] INFO  c.a.m.controller.VehiculoController - Petición POST recibida para registrar vehículo con patente: PE5678
+2026-06-10 12:09:21 [http-nio-8082-exec-8] INFO  c.a.m.service.VehiculoService - Intentando registrar vehículo con patente: PE5678
+2026-06-10 12:09:21 [http-nio-8082-exec-8] INFO  c.a.m.service.VehiculoService - Vehículo registrado exitosamente con ID: 4
+2026-06-10 12:09:47 [http-nio-8082-exec-9] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para obtener todos los vehículos
+2026-06-10 12:09:47 [http-nio-8082-exec-9] INFO  c.a.m.service.VehiculoService - Obteniendo todos los vehículos
+2026-06-10 12:10:31 [http-nio-8082-exec-10] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para buscar patente: ABCD12
+2026-06-10 12:10:31 [http-nio-8082-exec-10] INFO  c.a.m.service.VehiculoService - Buscando vehículo con patente: ABCD12
+2026-06-10 12:10:34 [http-nio-8082-exec-1] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para buscar patente: ABCD12
+2026-06-10 12:10:34 [http-nio-8082-exec-1] INFO  c.a.m.service.VehiculoService - Buscando vehículo con patente: ABCD12
+2026-06-10 12:10:54 [http-nio-8082-exec-2] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para buscar vehículos con estado: pendiente
+2026-06-10 12:10:54 [http-nio-8082-exec-2] INFO  c.a.m.service.VehiculoService - Buscando vehículos con estado: pendiente
+2026-06-10 12:11:36 [http-nio-8082-exec-3] INFO  c.a.m.controller.VehiculoController - Petición PATCH recibida para rechazar vehículo ID: 2
+2026-06-10 12:11:36 [http-nio-8082-exec-3] INFO  c.a.m.service.VehiculoService - Intentando rechazar vehículo ID: 2
+2026-06-10 12:11:56 [http-nio-8082-exec-4] INFO  c.a.m.controller.VehiculoController - Petición PATCH recibida para enviar vehículo ID: 3 a revisión
+2026-06-10 12:11:56 [http-nio-8082-exec-4] INFO  c.a.m.service.VehiculoService - Enviando vehículo ID: 3 a revisión
+2026-06-10 12:11:56 [http-nio-8082-exec-4] INFO  c.a.m.service.VehiculoService - Actualizando estado del vehículo ID: 3 a EN_REVISION
+2026-06-10 12:11:56 [http-nio-8082-exec-4] INFO  c.a.m.service.VehiculoService - Estado actualizado exitosamente para vehículo ID: 3
+2026-06-10 12:14:33 [http-nio-8082-exec-6] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para obtener vehículos paginados
+2026-06-10 12:14:33 [http-nio-8082-exec-6] INFO  c.a.m.service.VehiculoService - Obteniendo vehículos paginados
+2026-06-10 12:14:33 [http-nio-8082-exec-6] ERROR c.a.m.e.GlobalExceptionHandler - Error inesperado: No property '["id"]' found for type 'Vehiculo'
+2026-06-10 12:14:46 [http-nio-8082-exec-7] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para obtener vehículos paginados
+2026-06-10 12:14:46 [http-nio-8082-exec-7] INFO  c.a.m.service.VehiculoService - Obteniendo vehículos paginados
+2026-06-10 12:14:46 [http-nio-8082-exec-7] WARN  o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-06-10 12:17:07 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 12:17:07 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-10 12:17:07 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 12:17:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-10 12:17:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-10 12:17:10 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 12:17:10 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Starting MsVehiculoApplication using Java 26.0.1 with PID 34668 (C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo\target\classes started by jaelm in C:\Users\jaelm\OneDrive\Documentos\DUOC 3ER SEMESTRE\ing de software\ms-vehiculo)
+2026-06-10 12:17:10 [main] DEBUG c.a.msvehiculo.MsVehiculoApplication - Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-06-10 12:17:10 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 12:17:11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-10 12:17:11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 1 JPA repository interface.
+2026-06-10 12:17:12 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8082 (http)
+2026-06-10 12:17:12 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"]
+2026-06-10 12:17:12 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-10 12:17:12 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-06-10 12:17:12 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-10 12:17:12 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1170 ms
+2026-06-10 12:17:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-10 12:17:12 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6bcdd6e4
+2026-06-10 12:17:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-10 12:17:12 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://localhost:3306/vehiculos_db (MySQL 5.5)
+2026-06-10 12:17:12 [main] INFO  o.f.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.025s)
+2026-06-10 12:17:12 [main] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `vehiculos_db`: 1
+2026-06-10 12:17:12 [main] INFO  o.f.core.internal.command.DbMigrate - Schema `vehiculos_db` is up to date. No migration necessary.
+2026-06-10 12:17:12 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-10 12:17:12 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-06-10 12:17:12 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-10 12:17:13 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-10 12:17:13 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-06-10 12:17:13 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 12:17:14 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 12:17:14 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 12:17:14 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"]
+2026-06-10 12:17:14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/'
+2026-06-10 12:17:14 [main] INFO  c.a.msvehiculo.MsVehiculoApplication - Started MsVehiculoApplication in 4.443 seconds (process running for 4.799)
+2026-06-10 12:17:19 [http-nio-8082-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-10 12:17:19 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-10 12:17:19 [http-nio-8082-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-06-10 12:17:20 [http-nio-8082-exec-2] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 685 ms
+2026-06-10 12:17:35 [http-nio-8082-exec-3] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para obtener vehículos paginados
+2026-06-10 12:17:35 [http-nio-8082-exec-3] INFO  c.a.m.service.VehiculoService - Obteniendo vehículos paginados
+2026-06-10 12:17:35 [http-nio-8082-exec-3] WARN  o.s.d.w.c.SpringDataJacksonConfiguration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-06-10 12:18:05 [http-nio-8082-exec-7] INFO  c.a.m.controller.VehiculoController - Petición GET recibida para obtener vehículos paginados
+2026-06-10 12:18:05 [http-nio-8082-exec-7] INFO  c.a.m.service.VehiculoService - Obteniendo vehículos paginados
+2026-06-10 12:19:17 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 12:19:17 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-10 12:19:17 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10 12:19:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-10 12:19:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
