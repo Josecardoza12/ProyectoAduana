@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "vehiculos")
@@ -14,8 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Entidad que representa un vehículo registrado en un paso fronterizo")
-public class Vehiculo {
-
+public class Vehiculo extends RepresentationModel<Vehiculo> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(description = "Identificador único del vehículo", example = "1", accessMode = Schema.AccessMode.READ_ONLY)

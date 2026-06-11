@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/vehiculos")
@@ -36,6 +36,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "400", description = "Datos inválidos"),
             @ApiResponse(responseCode = "409", description = "Ya existe un vehículo con esa patente")
     })
+
     @PostMapping
     public ResponseEntity<Vehiculo> registrar(@Valid @RequestBody VehiculoRequestDTO dto) {
 
@@ -43,7 +44,37 @@ public class VehiculoController {
 
         Vehiculo nuevo = vehiculoService.registrarVehiculo(dto);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
+        // Link para consultar todos los vehículos
+        nuevo.add(
+                linkTo(methodOn(VehiculoController.class)
+                        .obtenerTodos())
+                        .withRel("todos")
+        );
+
+        // Link para consultar este vehículo específico
+        nuevo.add(
+                linkTo(methodOn(VehiculoController.class)
+                        .obtenerPorId(nuevo.getId()))
+                        .withSelfRel()
+        );
+
+        // Link para aprobar el vehículo
+        nuevo.add(
+                linkTo(methodOn(VehiculoController.class)
+                        .aprobarVehiculo(nuevo.getId()))
+                        .withRel("aprobar")
+        );
+
+        // Link para rechazar el vehículo
+        nuevo.add(
+                linkTo(methodOn(VehiculoController.class)
+                        .rechazarVehiculo(nuevo.getId()))
+                        .withRel("rechazar")
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(nuevo);
     }
 
     @Operation(summary = "Obtener todos los vehículos",
@@ -94,7 +125,21 @@ public class VehiculoController {
 
         log.info("Petición GET recibida para obtener vehículo con ID: {}", id);
 
-        return ResponseEntity.ok(vehiculoService.obtenerPorId(id));
+        Vehiculo vehiculo = vehiculoService.obtenerPorId(id);
+
+        vehiculo.add(
+                linkTo(methodOn(VehiculoController.class)
+                        .obtenerTodos())
+                        .withRel("todos")
+        );
+
+        vehiculo.add(
+                linkTo(methodOn(VehiculoController.class)
+                        .obtenerPorId(id))
+                        .withSelfRel()
+        );
+
+        return ResponseEntity.ok(vehiculo);
     }
 
     @Operation(summary = "Buscar por patente",
