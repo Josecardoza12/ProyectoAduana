@@ -16,19 +16,26 @@ public class JwtService {
             "tu_clave_secreta_muy_larga_y_segura_de_32_caracteres_minimo_12345";
 
     private SecretKey getSignInKey() {
+
         byte[] keyBytes =
                 Decoders.BASE64.decode(
                         java.util.Base64.getEncoder()
-                                .encodeToString(SECRET_KEY.getBytes())
+                                .encodeToString(
+                                        SECRET_KEY.getBytes()
+                                )
                 );
 
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generarToken(String correo) {
+    public String generarToken(
+            String correo,
+            String rol
+    ) {
 
         return Jwts.builder()
                 .subject(correo)
+                .claim("role", rol)
                 .issuedAt(new Date())
                 .expiration(
                         new Date(
@@ -41,13 +48,26 @@ public class JwtService {
 
     public String extraerCorreo(String token) {
 
-        Claims claims = Jwts.parser()
-                .verifyWith(getSignInKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        Claims claims =
+                Jwts.parser()
+                        .verifyWith(getSignInKey())
+                        .build()
+                        .parseSignedClaims(token)
+                        .getPayload();
 
         return claims.getSubject();
+    }
+
+    public String extraerRol(String token) {
+
+        Claims claims =
+                Jwts.parser()
+                        .verifyWith(getSignInKey())
+                        .build()
+                        .parseSignedClaims(token)
+                        .getPayload();
+
+        return claims.get("role", String.class);
     }
 
     public boolean esTokenValido(String token) {

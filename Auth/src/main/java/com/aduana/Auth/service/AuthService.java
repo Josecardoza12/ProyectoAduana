@@ -20,12 +20,17 @@ public class AuthService {
     public AuthResponse register(RegisterRequest request) {
 
         if (usuarioRepository.findByCorreo(request.getCorreo()).isPresent()) {
-            throw new RuntimeException("El correo ya está registrado");
+
+            throw new RuntimeException(
+                    "El correo ya está registrado"
+            );
         }
 
         Usuario usuario = new Usuario();
 
-        usuario.setCorreo(request.getCorreo());
+        usuario.setCorreo(
+                request.getCorreo()
+        );
 
         usuario.setPassword(
                 passwordEncoder.encode(
@@ -33,13 +38,16 @@ public class AuthService {
                 )
         );
 
-        usuario.setRol(request.getRol());
+        usuario.setRol(
+                request.getRol()
+        );
 
         usuarioRepository.save(usuario);
 
         String token =
                 jwtService.generarToken(
-                        usuario.getCorreo()
+                        usuario.getCorreo(),
+                        usuario.getRol().name()
                 );
 
         return new AuthResponse(token);
@@ -68,7 +76,8 @@ public class AuthService {
 
         String token =
                 jwtService.generarToken(
-                        usuario.getCorreo()
+                        usuario.getCorreo(),
+                        usuario.getRol().name()
                 );
 
         return new AuthResponse(token);
