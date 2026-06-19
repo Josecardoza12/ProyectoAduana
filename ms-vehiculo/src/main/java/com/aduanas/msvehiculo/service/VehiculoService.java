@@ -22,7 +22,7 @@ public class VehiculoService {
     private VehiculoRepository vehiculoRepository;
 
     // Recibe el DTO, lo convierte a entidad y guarda en la BD
-    public Vehiculo registrarVehiculo(VehiculoRequestDTO dto) {
+    public Vehiculo registrarVehiculo(VehiculoRequestDTO dto, Long userId) {
         log.info("Intentando registrar vehículo con patente: {}", dto.getPatente());
 
         if (vehiculoRepository.existsByPatente(dto.getPatente())) {
@@ -30,8 +30,9 @@ public class VehiculoService {
             throw new VehiculoYaExisteException(dto.getPatente());
         }
 
-        // Convierte el DTO a entidad
         Vehiculo vehiculo = new Vehiculo();
+
+        vehiculo.setUserId(userId);
         vehiculo.setPatente(dto.getPatente());
         vehiculo.setMarca(dto.getMarca());
         vehiculo.setModelo(dto.getModelo());
@@ -46,10 +47,11 @@ public class VehiculoService {
         vehiculo.setObservaciones(dto.getObservaciones());
 
         Vehiculo guardado = vehiculoRepository.save(vehiculo);
+
         log.info("Vehículo registrado exitosamente con ID: {}", guardado.getId());
+
         return guardado;
     }
-
     // Retorna todos los vehículos registrados
     public List<Vehiculo> obtenerTodos() {
         log.info("Obteniendo todos los vehículos");
@@ -112,7 +114,22 @@ public class VehiculoService {
 
     // Actualiza el estado de un vehículo
     public Vehiculo actualizarEstado(Long id, String nuevoEstado) {
+
         log.info("Actualizando estado del vehículo ID: {} a {}", id, nuevoEstado);
+
+        String estadoNormalizado = nuevoEstado.toUpperCase();
+
+        if (
+                !estadoNormalizado.equals("PENDIENTE") &&
+                        !estadoNormalizado.equals("APROBADO") &&
+                        !estadoNormalizado.equals("RECHAZADO") &&
+                        !estadoNormalizado.equals("EN_REVISION")
+        ) {
+            log.warn("Estado inválido recibido: {}", nuevoEstado);
+            throw new IllegalArgumentException(
+                    "Estado inválido. Estados permitidos: PENDIENTE, APROBADO, RECHAZADO, EN_REVISION"
+            );
+        }
 
         Vehiculo vehiculo = vehiculoRepository.findById(id)
                 .orElseThrow(() -> {
@@ -120,7 +137,7 @@ public class VehiculoService {
                     return new VehiculoNotFoundException(id);
                 });
 
-        vehiculo.setEstado(nuevoEstado);
+        vehiculo.setEstado(estadoNormalizado);
 
         Vehiculo actualizado = vehiculoRepository.save(vehiculo);
 
@@ -211,5 +228,9 @@ public class VehiculoService {
         }
         vehiculoRepository.deleteById(id);
         log.info("Vehículo con ID: {} eliminado exitosamente", id);
+    }
+    public List<Vehiculo> obtenerPorUsuario(Long userId) {
+        log.info("Buscando vehículos del usuario ID: {}", userId);
+        return vehiculoRepository.findByUserId(userId);
     }
 }

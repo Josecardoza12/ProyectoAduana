@@ -24,4 +24,6 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo, Long> {
 
     // Busca todos los vehículos por paso fronterizo
     List<Vehiculo> findByPasoFronterizo(String pasoFronterizo);
+    List<Vehiculo> findByUserId(Long userId);
+
 }

@@ -3,8 +3,9 @@
 -- Microservicio: ms-vehiculo (puerto 8082)
 
 CREATE TABLE IF NOT EXISTS vehiculos (
-                                         id                  BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                         patente             VARCHAR(20)     NOT NULL,
+                   id                  BIGINT AUTO_INCREMENT PRIMARY KEY,
+                      user_id BIGINT NOT NULL,
+                          patente             VARCHAR(20)     NOT NULL,
     marca               VARCHAR(50)     NOT NULL,
     modelo              VARCHAR(50)     NOT NULL,
     anio                VARCHAR(4)      NOT NULL,

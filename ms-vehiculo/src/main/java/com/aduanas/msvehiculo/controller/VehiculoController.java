@@ -1,5 +1,9 @@
 package com.aduanas.msvehiculo.controller;
 
+import com.aduanas.msvehiculo.client.AuthClient;
+
+import com.aduanas.msvehiculo.dto.AuthUserResponse;
+import org.springframework.security.access.prepost.PreAuthorize;
 import com.aduanas.msvehiculo.dto.VehiculoRequestDTO;
 import com.aduanas.msvehiculo.model.Vehiculo;
 import com.aduanas.msvehiculo.service.VehiculoService;
@@ -28,6 +32,8 @@ public class VehiculoController {
 
     @Autowired
     private VehiculoService vehiculoService;
+    @Autowired
+    private AuthClient authClient;
 
     @Operation(summary = "Registrar vehículo",
             description = "Registra un nuevo vehículo en el paso fronterizo")
@@ -38,34 +44,40 @@ public class VehiculoController {
     })
 
     @PostMapping
-    public ResponseEntity<Vehiculo> registrar(@Valid @RequestBody VehiculoRequestDTO dto) {
+    @PreAuthorize("hasRole('TURISTA')")
+    public ResponseEntity<Vehiculo> registrar(
+            @Valid @RequestBody VehiculoRequestDTO dto,
+            @RequestHeader("Authorization") String token) {
 
         log.info("Petición POST recibida para registrar vehículo con patente: {}", dto.getPatente());
 
-        Vehiculo nuevo = vehiculoService.registrarVehiculo(dto);
+        AuthUserResponse usuarioAuth =
+                authClient.obtenerUsuarioAutenticado(token).block();
 
-        // Link para consultar todos los vehículos
+        Long userId = usuarioAuth.getId();
+
+        log.info("Registrando vehículo para usuario TURISTA ID: {}", userId);
+
+        Vehiculo nuevo = vehiculoService.registrarVehiculo(dto, userId);
+
         nuevo.add(
                 linkTo(methodOn(VehiculoController.class)
                         .obtenerTodos())
                         .withRel("todos")
         );
 
-        // Link para consultar este vehículo específico
         nuevo.add(
                 linkTo(methodOn(VehiculoController.class)
                         .obtenerPorId(nuevo.getId()))
                         .withSelfRel()
         );
 
-        // Link para aprobar el vehículo
         nuevo.add(
                 linkTo(methodOn(VehiculoController.class)
                         .aprobarVehiculo(nuevo.getId()))
                         .withRel("aprobar")
         );
 
-        // Link para rechazar el vehículo
         nuevo.add(
                 linkTo(methodOn(VehiculoController.class)
                         .rechazarVehiculo(nuevo.getId()))
@@ -83,6 +95,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
     })
     @GetMapping
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<List<Vehiculo>> obtenerTodos() {
 
         log.info("Petición GET recibida para obtener todos los vehículos");
@@ -97,6 +110,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "200", description = "Lista paginada obtenida correctamente")
     })
     @GetMapping("/paginados")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<Page<Vehiculo>> obtenerVehiculosPaginados(
 
             @RequestParam(defaultValue = "0")
@@ -121,6 +135,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "404", description = "Vehículo no encontrado")
     })
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('TURISTA', 'PDI', 'ADMIN')")
     public ResponseEntity<Vehiculo> obtenerPorId(@PathVariable Long id) {
 
         log.info("Petición GET recibida para obtener vehículo con ID: {}", id);
@@ -142,6 +157,16 @@ public class VehiculoController {
         return ResponseEntity.ok(vehiculo);
     }
 
+    @GetMapping("/usuario/{userId}")
+    @PreAuthorize("hasAnyRole('TURISTA', 'PDI', 'ADMIN')")
+    public ResponseEntity<List<Vehiculo>> obtenerPorUsuario(@PathVariable Long userId) {
+
+        log.info("Petición GET recibida para buscar vehículos del usuario ID: {}", userId);
+
+        return ResponseEntity.ok(
+                vehiculoService.obtenerPorUsuario(userId)
+        );
+    }
     @Operation(summary = "Buscar por patente",
             description = "Busca un vehículo por su patente")
     @ApiResponses(value = {
@@ -149,6 +174,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "404", description = "Patente no encontrada")
     })
     @GetMapping("/patente/{patente}")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<Vehiculo> obtenerPorPatente(@PathVariable String patente) {
 
         log.info("Petición GET recibida para buscar patente: {}", patente);
@@ -162,6 +188,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
     })
     @GetMapping("/estado/{estado}")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<List<Vehiculo>> obtenerPorEstado(@PathVariable String estado) {
 
         log.info("Petición GET recibida para buscar vehículos con estado: {}", estado);
@@ -175,6 +202,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
     })
     @GetMapping("/rut/{rut}")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<List<Vehiculo>> obtenerPorRut(@PathVariable String rut) {
 
         log.info("Petición GET recibida para buscar vehículos del RUT: {}", rut);
@@ -188,6 +216,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "200", description = "Lista obtenida correctamente")
     })
     @GetMapping("/paso/{pasoFronterizo}")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<List<Vehiculo>> obtenerPorPaso(@PathVariable String pasoFronterizo) {
 
         log.info("Petición GET recibida para buscar vehículos en paso: {}", pasoFronterizo);
@@ -196,18 +225,23 @@ public class VehiculoController {
                 vehiculoService.obtenerPorPasoFronterizo(pasoFronterizo));
     }
 
-    @Operation(summary = "Actualizar estado",
-            description = "Actualiza el estado de un vehículo (APROBADO, RECHAZADO, EN_REVISION)")
+    @Operation(
+            summary = "Actualizar estado",
+            description = "Actualiza el estado de un vehículo. Estados permitidos: PENDIENTE, APROBADO, RECHAZADO, EN_REVISION"
+    )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Estado actualizado correctamente"),
-            @ApiResponse(responseCode = "404", description = "Vehículo no encontrado")
+            @ApiResponse(responseCode = "400", description = "Estado inválido"),
+            @ApiResponse(responseCode = "404", description = "Vehículo no encontrado"),
+            @ApiResponse(responseCode = "403", description = "No autorizado")
     })
     @PatchMapping("/{id}/estado")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<Vehiculo> actualizarEstado(
             @PathVariable Long id,
             @RequestParam String nuevoEstado) {
 
-        log.info("Petición PATCH recibida para actualizar estado del vehículo ID: {}", id);
+        log.info("Petición PATCH recibida para actualizar estado del vehículo ID: {} a {}", id, nuevoEstado);
 
         Vehiculo actualizado = vehiculoService.actualizarEstado(id, nuevoEstado);
 
@@ -221,6 +255,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "404", description = "Vehículo no encontrado")
     })
     @PatchMapping("/{id}/aprobar")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<Vehiculo> aprobarVehiculo(@PathVariable Long id) {
 
         log.info("Petición PATCH recibida para aprobar vehículo ID: {}", id);
@@ -236,6 +271,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "404", description = "Vehículo no encontrado")
     })
     @PatchMapping("/{id}/rechazar")
+    @PreAuthorize("hasAnyRole('PDI', 'ADMIN')")
     public ResponseEntity<Vehiculo> rechazarVehiculo(@PathVariable Long id) {
 
         log.info("Petición PATCH recibida para rechazar vehículo ID: {}", id);
@@ -251,6 +287,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "404", description = "Vehículo no encontrado")
     })
     @PatchMapping("/{id}/revision")
+    @PreAuthorize("hasAnyRole('PDI','ADMIN')")
     public ResponseEntity<Vehiculo> enviarRevision(@PathVariable Long id) {
 
         log.info("Petición PATCH recibida para enviar vehículo ID: {} a revisión", id);
@@ -266,6 +303,7 @@ public class VehiculoController {
             @ApiResponse(responseCode = "404", description = "Vehículo no encontrado")
     })
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
 
         log.info("Petición DELETE recibida para eliminar vehículo con ID: {}", id);

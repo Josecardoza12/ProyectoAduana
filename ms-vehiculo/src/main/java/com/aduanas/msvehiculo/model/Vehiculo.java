@@ -21,6 +21,10 @@ public class Vehiculo extends RepresentationModel<Vehiculo> {
     @Schema(description = "Identificador único del vehículo", example = "1", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
+    @Column(name = "user_id", nullable = false)
+    @Schema(description = "ID del usuario turista autenticado que registra el vehículo")
+    private Long userId;
+
     @NotBlank(message = "La patente es obligatoria")
     @Column(nullable = false, length = 20)
     @Schema(description = "Patente del vehículo", example = "ABCD12", requiredMode = Schema.RequiredMode.REQUIRED)
