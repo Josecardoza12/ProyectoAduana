@@ -1,6 +1,7 @@
 package com.example.declaracion_SAG.controller;
 
 import com.example.declaracion_SAG.client.AuthClient;
+import com.example.declaracion_SAG.dto.AuthUserResponse;
 import com.example.declaracion_SAG.enums.EstadoDeclaracion;
 import com.example.declaracion_SAG.model.DeclaracionSag;
 import com.example.declaracion_SAG.services.DeclaracionSagService;
@@ -35,7 +36,7 @@ public class DeclaracionSagController {
     private AuthClient authClient;
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN', 'PDI','SAG','TURISTA')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'SAG', 'PDI')")
     @Operation(
             summary = "Obtener Declaracion Sag",
             description = "Obtiene la lista completa de Declaracion SAG registrados en el sistema"
@@ -107,7 +108,7 @@ public class DeclaracionSagController {
     }
 
     @GetMapping("/usuario/{userId}")
-    @PreAuthorize("hasAnyRole('ADMIN', 'PDI','SAG')")
+    @PreAuthorize("hasAnyRole('TURISTA', 'ADMIN', 'PDI', 'SAG')")
     @Operation(
             summary = "Buscar declaracion SAG por usuario",
             description = "Obtiene todos las declaraciones sag asociados a un cliente registrado mediante su ID."
@@ -223,27 +224,35 @@ public class DeclaracionSagController {
         return ResponseEntity.ok(declaraciones);
     }
     @PostMapping
-    @PreAuthorize("hasAnyRole('PASAJERO', 'FUNCIONARIO', 'ADMIN')")
+    @PreAuthorize("hasRole('TURISTA')")
     public ResponseEntity<DeclaracionSag> crearDeclaracion(
-            @Valid @RequestBody DeclaracionSag declaracion ,  @RequestHeader("Authorization") String token){
+            @Valid @RequestBody DeclaracionSag declaracion,
+            @RequestHeader("Authorization") String token) {
 
         log.info("Solicitud POST /api/v1/declaraciones");
-        authClient.obtenerAuth(declaracion.getUserId(), token).block();
 
+        AuthUserResponse usuarioAuth =
+                authClient.obtenerUsuarioAutenticado(token).block();
+
+        declaracion.setUserId(usuarioAuth.getId());
 
         log.info("Creando declaración SAG para usuario {}", declaracion.getUserId());
 
-        DeclaracionSag guardado = declaracionSagService.guardarDeclaracion(declaracion);
-        if(guardado.getId() == null){
+        DeclaracionSag guardado =
+                declaracionSagService.guardarDeclaracion(declaracion);
+
+        if (guardado.getId() == null) {
             log.warn("No se pudo crear la declaracion: datos incompletos");
             return ResponseEntity.badRequest().build();
         }
+
         log.info("Declaracion creada correctamente con id {}", guardado.getId());
+
         return ResponseEntity.status(HttpStatus.CREATED).body(guardado);
     }
 
     @PutMapping("/{id}/estado")
-    @PreAuthorize("hasAnyRole('ADMIN', 'PDI','SAG')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'SAG')")
     public ResponseEntity<DeclaracionSag> actualizarEstado(
             @PathVariable Long id,
             @RequestParam EstadoDeclaracion estado){

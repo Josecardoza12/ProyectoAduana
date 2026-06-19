@@ -10,7 +10,7 @@ public class WebclientConfig {
 
     public WebClient webClient(){
         return WebClient.builder()
-                .baseUrl("http://localhost:8082/api/v1/auth")
+                .baseUrl("http://localhost:8081/auth")
                 .build();
     }
 }

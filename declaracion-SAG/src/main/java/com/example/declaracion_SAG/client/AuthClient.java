@@ -1,28 +1,32 @@
 package com.example.declaracion_SAG.client;
 
-import com.example.declaracion_SAG.dto.AuthDto;
+import com.example.declaracion_SAG.dto.AuthUserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.server.ResponseStatusException;
+
 import reactor.core.publisher.Mono;
 
-@Service
-@RequiredArgsConstructor
+
+@Component
 public class AuthClient {
 
     private final WebClient webClient;
 
-    public Mono<AuthDto> obtenerAuth(Long id, String token) {
+    public AuthClient(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder
+                .baseUrl("http://localhost:8081")
+                .build();
+    }
+
+    public Mono<AuthUserResponse> obtenerUsuarioAutenticado(String token) {
         return webClient.get()
-                .uri("/{id}", id)
+                .uri("/auth/me")
                 .header("Authorization", token)
                 .retrieve()
-                .onStatus(HttpStatusCode::is4xxClientError, response ->
-                        Mono.error(new ResponseStatusException(
-                                HttpStatus.NOT_FOUND, "Usuario no encontrado")))
-                .bodyToMono(AuthDto.class);
+                .bodyToMono(AuthUserResponse.class);
     }
 }

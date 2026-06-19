@@ -21,10 +21,11 @@ public class DeclaracionSag {
     private Long id;
 
     @NotNull(message = "El id del usuario es obligatorio")
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     @NotBlank(message = "El nombre del pasajero es obligatorio")
-    @Column(nullable = false)
+    @Column(name = "nombre_pasajero", nullable = false)
     private String nombrePasajero;
 
     @NotBlank(message = "El documento es obligatorio")
@@ -32,15 +33,15 @@ public class DeclaracionSag {
     private String documento;
 
     @NotBlank(message = "El producto declarado es obligatorio")
-    @Column(nullable = false)
+    @Column(name = "producto_declarado", nullable = false)
     private String productoDeclarado;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "categoria_producto", nullable = false)
     private CategoriaProducto categoriaProducto;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "nivel_riesgo", nullable = false)
     private NivelRiesgo nivelRiesgo;
 
     @Enumerated(EnumType.STRING)
@@ -50,10 +51,13 @@ public class DeclaracionSag {
     @Column(length = 500)
     private String observacion;
 
+    @Column(name = "archivo_adjunto")
     private String archivoAdjunto;
 
+    @Column(name = "requiere_inspeccion")
     private Boolean requiereInspeccion;
 
+    @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
 }
 
