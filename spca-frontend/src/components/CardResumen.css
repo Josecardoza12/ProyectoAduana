@@ -1,0 +1,81 @@
+/* cardResumen.css */
+.card-resumen {
+    background-color: #ffffff;
+    border-radius: 16px; /* Bordes un poco más redondos estilo Figma */
+    padding: 24px;
+    min-width: 240px;
+    flex: 1; /* Para que se adapten de forma responsiva en la fila */
+    
+    /* Sombra mucho más sutil y limpia que la clásica negra */
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.01); /* Borde casi invisible */
+
+    /* Cambiamos a distribución horizontal */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-resumen:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Contenedor de los textos del lado izquierdo */
+.card-resumen-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Título de la tarjeta (ej: Pasajeros Hoy) */
+.card-resumen h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c757d; /* Gris muted elegante en vez de azul */
+    margin: 0 0 6px 0;
+    letter-spacing: -0.1px;
+}
+
+/* Número grande (ej: 1,247) */
+.card-resumen .cantidad {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a; /* Casi negro para un contraste limpio */
+    margin: 0 0 4px 0;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+}
+
+/* Tendencia de porcentaje (ej: +12% vs ayer) */
+.card-resumen .tendencia {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.card-resumen .tendencia.positiva {
+    color: #198754; /* Verde Bootstrap exitoso */
+}
+
+.card-resumen .tendencia.negativa {
+    color: #dc3545; /* Rojo de alerta */
+}
+
+/* La cajita del Icono Flotante del lado derecho */
+.card-icono-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    flex-shrink: 0; /* Evita que el icono se deforme si el texto es largo */
+}
+
+.card-icono-wrapper i {
+    font-size: 20px;
+}

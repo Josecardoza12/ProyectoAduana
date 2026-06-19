@@ -1,0 +1,43 @@
+.card {
+    border-radius: 12px;
+}
+
+.card-header h4 {
+    margin: 0;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+.table-hover tbody tr {
+    transition: 0.2s ease-in-out;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.form-select,
+.form-control {
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+
+.btn {
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.badge {
+    font-weight: 600;
+}
