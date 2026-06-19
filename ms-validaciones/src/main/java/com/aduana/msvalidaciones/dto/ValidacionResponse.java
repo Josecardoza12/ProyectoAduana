@@ -1,36 +1,34 @@
 package com.aduana.msvalidaciones.dto;
 
 import com.aduana.msvalidaciones.enums.EstadoValidacion;
+import com.aduana.msvalidaciones.enums.TipoTramite;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.hateoas.RepresentationModel;
 
-public class ValidacionResponse
-        extends RepresentationModel<ValidacionResponse> {
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+public class ValidacionResponse extends RepresentationModel<ValidacionResponse> {
 
     private Long id;
-    private EstadoValidacion estado;
-    private String funcionario;
 
-    public Long getId() {
-        return id;
-    }
+    private Long tramiteId;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private TipoTramite tipoTramite;
 
-    public EstadoValidacion getEstado() {
-        return estado;
-    }
+    private EstadoValidacion estadoAnterior;
 
-    public void setEstado(EstadoValidacion estado) {
-        this.estado = estado;
-    }
+    private EstadoValidacion estadoNuevo;
 
-    public String getFuncionario() {
-        return funcionario;
-    }
+    private Long funcionarioId;
 
-    public void setFuncionario(String funcionario) {
-        this.funcionario = funcionario;
-    }
+    private String funcionarioCorreo;
+
+    private String funcionarioRol;
+
+    private String observaciones;
+
+    private LocalDateTime fechaValidacion;
 }
