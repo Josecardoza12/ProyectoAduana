@@ -82,4 +82,8 @@ public class AuthService {
 
         return new AuthResponse(token);
     }
+    public Usuario buscarPorCorreo(String correo) {
+        return usuarioRepository.findByCorreo(correo)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
 }

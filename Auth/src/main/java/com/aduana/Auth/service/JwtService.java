@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtService {
 
     private static final String SECRET_KEY =
-            "tu_clave_secreta_muy_larga_y_segura_de_32_caracteres_minimo_12345";
+            "tu_clave_super_secreta_para_aduana_2026_muy_segura";
 
     private SecretKey getSignInKey() {
 
