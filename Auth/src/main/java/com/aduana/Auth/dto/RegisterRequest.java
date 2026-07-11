@@ -20,6 +20,9 @@ public class RegisterRequest {
             message = "La contraseña debe tener mínimo 8 caracteres"
     )
     private String password;
+    @NotBlank(message = "El rut es obligatorio")
+    @Size(max = 10, message = "El rut debe tener maximo 10 caracteres")
+    private String rut;
 
     @NotNull(message = "Debe seleccionar un rol")
     private Rol rol;

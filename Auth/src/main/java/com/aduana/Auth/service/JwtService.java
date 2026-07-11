@@ -30,11 +30,13 @@ public class JwtService {
 
     public String generarToken(
             String correo,
-            String rol
+            String rol,
+            String rut
     ) {
 
         return Jwts.builder()
                 .subject(correo)
+                .claim("rut", rut)
                 .claim("role", rol)
                 .issuedAt(new Date())
                 .expiration(
@@ -58,6 +60,17 @@ public class JwtService {
         return claims.getSubject();
     }
 
+    public String extraerRut(String token){
+
+        Claims claims =
+                Jwts.parser()
+                        .verifyWith(getSignInKey())
+                        .build()
+                        .parseSignedClaims(token)
+                        .getPayload();
+
+        return claims.get("rut", String.class);
+    }
     public String extraerRol(String token) {
 
         Claims claims =

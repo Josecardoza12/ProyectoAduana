@@ -46,6 +46,11 @@ const guardarUserId = (userId) => {
     localStorage.setItem("userId", userId);
 };
 
+const guardarRut = (rut) =>{
+    localStorage.setItem("rut",rut);
+
+};
+
 const obtenerToken = () => {
     return localStorage.getItem("token");
 };
@@ -58,11 +63,16 @@ const obtenerUserId = () => {
     return localStorage.getItem("userId");
 };
 
+const obtenerRut = () => {
+    return localStorage.getItem("rut");
+};
+
 const cerrarSesion = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("rol");
     localStorage.removeItem("correo");
     localStorage.removeItem("userId");
+    localStorage.removeItem("rut");
 };
 
 const estaAutenticado = () => {
@@ -107,6 +117,16 @@ const obtenerCorreoDesdeToken = (token) => {
     return tokenDecodificado.sub || null;
 };
 
+const obtenerRutDesdeToken = (token) =>{
+    const tokenDecodificado = decodificarToken(token);
+    
+    if(!tokenDecodificado){
+        return null;
+    }
+    return tokenDecodificado.sub ||  null;
+
+};
+
 export default {
     login,
     registrar,
@@ -115,12 +135,15 @@ export default {
     guardarRol,
     guardarCorreo,
     guardarUserId,
+    guardarRut,
     obtenerToken,
     obtenerRol,
     obtenerUserId,
+    obtenerRut,
     cerrarSesion,
     estaAutenticado,
     decodificarToken,
     obtenerRolDesdeToken,
-    obtenerCorreoDesdeToken
+    obtenerCorreoDesdeToken,
+    obtenerRutDesdeToken
 };

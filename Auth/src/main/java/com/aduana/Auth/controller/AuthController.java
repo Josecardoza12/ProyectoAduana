@@ -82,7 +82,8 @@ public class AuthController {
         AuthUserResponse response = new AuthUserResponse(
                 usuario.getId(),
                 usuario.getCorreo(),
-                usuario.getRol()
+                usuario.getRol(),
+                usuario.getRut()
         );
 
         return ResponseEntity.ok(response);

@@ -19,10 +19,10 @@ public class AuthService {
 
     public AuthResponse register(RegisterRequest request) {
 
-        if (usuarioRepository.findByCorreo(request.getCorreo()).isPresent()) {
+        if (usuarioRepository.findByCorreo(request.getCorreo()).isPresent() && usuarioRepository.findByRut(request.getRut()).isPresent()) {
 
             throw new RuntimeException(
-                    "El correo ya está registrado"
+                    "El correo ya está registrado y el rut ya estan registrados"
             );
         }
 
@@ -31,7 +31,7 @@ public class AuthService {
         usuario.setCorreo(
                 request.getCorreo()
         );
-
+        usuario.setRut(request.getRut());
         usuario.setPassword(
                 passwordEncoder.encode(
                         request.getPassword()
@@ -47,7 +47,8 @@ public class AuthService {
         String token =
                 jwtService.generarToken(
                         usuario.getCorreo(),
-                        usuario.getRol().name()
+                        usuario.getRol().name(),
+                        usuario.getRut()
                 );
 
         return new AuthResponse(token);
@@ -63,6 +64,9 @@ public class AuthService {
                                 "Usuario no encontrado"
                         )
                 );
+        if (!usuario.getRut().equals(request.getRut())) {
+            throw new RuntimeException("El rut no corresponde al correo");
+        }
 
         if (!passwordEncoder.matches(
                 request.getPassword(),
@@ -77,7 +81,8 @@ public class AuthService {
         String token =
                 jwtService.generarToken(
                         usuario.getCorreo(),
-                        usuario.getRol().name()
+                        usuario.getRol().name(),
+                        usuario.getRut()
                 );
 
         return new AuthResponse(token);
@@ -85,5 +90,12 @@ public class AuthService {
     public Usuario buscarPorCorreo(String correo) {
         return usuarioRepository.findByCorreo(correo)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
+
+    public Usuario buscarPorRut(String rut){
+        return usuarioRepository.findByRut(rut).orElseThrow(
+                () -> new RuntimeException(("Usuario no encontrado"))
+        );
+
     }
 }

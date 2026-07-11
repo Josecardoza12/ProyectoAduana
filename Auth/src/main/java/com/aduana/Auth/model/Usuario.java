@@ -18,6 +18,8 @@ public class Usuario {
 
     private String correo;
 
+    private String rut;
+
     private String password;
 
     @Enumerated(EnumType.STRING)

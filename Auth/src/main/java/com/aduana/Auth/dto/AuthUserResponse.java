@@ -13,4 +13,5 @@ public class AuthUserResponse {
     private Long id;
     private String correo;
     private Rol rol;
+    private String rut;
 }

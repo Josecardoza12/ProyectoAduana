@@ -11,6 +11,7 @@ function Login() {
     const [rolSeleccionado, setRolSeleccionado] = useState("SAG");
 
     const [credenciales, setCredenciales] = useState({
+        rut:"",
         correo: "",
         password: ""
     });
@@ -39,7 +40,7 @@ function Login() {
         });
     };
 
-   const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -52,6 +53,7 @@ function Login() {
 
         const rolToken = authService.obtenerRolDesdeToken(token);
         const correoToken = authService.obtenerCorreoDesdeToken(token);
+        const rutToken = authService.obtenerRutDesdeToken(token);
 
         if (!rolToken) {
             setError("No se pudo obtener el rol del usuario desde el token");
@@ -65,11 +67,14 @@ function Login() {
 
         authService.guardarSesion(token);
         authService.guardarRol(rolToken);
-        authService.guardarCorreo(correoToken || credenciales.correo);
+        authService.guardarCorreo(correoToken || credenciales.correo)
+        authService.guardarRut(rutToken || credenciales.rut);    
+;
 
         const usuarioResponse = await authService.obtenerUsuarioAutenticado();
 
         authService.guardarUserId(usuarioResponse.data.id);
+        authService.guardarRut(usuarioResponse.data.rut);
 
         if (rolToken === "TURISTA") {
             navigate("/turista");
@@ -132,7 +137,25 @@ function Login() {
                     )}
 
                     <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <label    className=" form-label login-label">
+                            Rut
+                        </label>
+                        <div className="login-input-group">
 
+                            <i className="bi bi-person"></i>
+                            <input 
+                            type="text"
+                            name = "rut"
+                            value={credenciales.rut}
+                            onChange={handleChange}
+                            placeholder="20621261-2"
+                            required
+                            
+                            
+                            />
+                        </div>
+                    </div>
                         <div className="mb-4">
                             <label className="form-label login-label">
                                 Correo Electrónico
